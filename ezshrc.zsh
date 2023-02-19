@@ -136,6 +136,3 @@ SAVEHIST=50000      #save upto 50,000 lines in history. oh-my-zsh default is 10,
 
 alias l="ls -lAhrtF"    # show all except . .. , sort by recent, / at the end of folders
 alias e="exit"
-
-bindkey '^I'   complete-word       # tab          | complete
-bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
