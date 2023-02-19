@@ -59,18 +59,8 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    zsh-completions
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    history-substring-search
-    screen
-    systemd
-    web-search
-    k
-    extract
-    z
-    sudo
+plugins=(zsh-autosuggestions zsh-syntax-highlighting history-substring-search k extract z sudo)
+    # zsh-completions
     # httpie
     # git
     # python
@@ -80,7 +70,7 @@ plugins=(
     # pyenv
     # redis-cli
     # zsh-wakatime          # enable if you use wakatime with 'https://github.com/wbingli/zsh-wakatime'
-    )
+    #)
 #plugins+=(zsh-nvm)
 
 # source $ZSH/oh-my-zsh.sh          # This is now run in .zshrc after importing user configs from ~/.config/ezsh/zshrc/* files 
@@ -136,3 +126,6 @@ SAVEHIST=50000      #save upto 50,000 lines in history. oh-my-zsh default is 10,
 
 alias l="ls -lAhrtF"    # show all except . .. , sort by recent, / at the end of folders
 alias e="exit"
+
+bindkey '^I'   complete-word       # tab          | complete
+bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
