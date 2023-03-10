@@ -51,6 +51,12 @@ else
     git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ~/.config/ezsh/oh-my-zsh/plugins/zsh-autosuggestions
 fi
 
+if [ -d ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-completions ]; then
+    cd ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-completions && git pull
+else
+    git clone --depth=1 https://github.com/zsh-users/zsh-completions ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-completions
+fi
+
 if [ -d ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
     cd ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting && git pull
 else
@@ -63,6 +69,13 @@ else
     git clone --depth=1 https://github.com/zsh-users/zsh-history-substring-search ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-history-substring-search
 fi
 
+if [ -d ~/.~/.config/ezsh/fzf ]; then
+    cd ~/.config/ezsh/fzf && git pull
+    ~/.config/ezsh/fzf/install --all --key-bindings --completion --no-update-rc
+else
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.config/ezsh/fzf
+    ~/.config/ezsh/fzf/install --all --key-bindings --completion --no-update-rc
+fi
 
 # INSTALL FONTS
 
