@@ -20,17 +20,6 @@ POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
 
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time background_jobs ram load rvm time)
-
-# more prompt elements that are suggested
-# (public_ip docker_machine pyenv nvm)          https://github.com/bhilburn/powerlevel9k#prompt-customization
-# Note: using public_ip is cool but when connection is down prompt waits for 10-20 seconds
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh os_icon context dir vcs)
-
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-
-
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -78,11 +67,8 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
     history-substring-search
-    screen
     systemd
-    web-search
     k
-    extract
     z
     sudo
     # httpie
@@ -133,10 +119,10 @@ export PATH=$PATH:~/.local/bin
 
 export PATH=$PATH:~/.config/ezsh/bin
 
+export PATH=$PATH:~/.cargo/bin
+
 NPM_PACKAGES="${HOME}/.npm"
 PATH="$NPM_PACKAGES/bin:$PATH"
-
-[[ -s "$HOME/.config/ezsh/marker/marker.sh" ]] && source "$HOME/.config/ezsh/marker/marker.sh"
 
 autoload -U compinit && compinit -C -d ~/.cache/zsh/.zcompdump        # zsh-completions
 # autoload bashcompinit                 # bash completions
@@ -147,7 +133,6 @@ autoload -U compinit && compinit -C -d ~/.cache/zsh/.zcompdump        # zsh-comp
 SAVEHIST=50000      #save upto 50,000 lines in history. oh-my-zsh default is 10,000
 #setopt hist_ignore_all_dups     # dont record duplicated entries in history during a single session
 
-alias myip="wget -qO- https://wtfismyip.com/text"	# quickly show external ip address
 alias l="ls -lAhrtF"    # show all except . .. , sort by recent, / at the end of folders
 alias e="exit"
 
@@ -163,49 +148,5 @@ cheat() {
         curl "https://cheat.sh/$1/$2+$3+$4+$5+$6+$7+$8+$9+$10"
     else
         curl "https://cheat.sh/$1"
-    fi
-}
-
-
-# Matrix screen saver! will run if you have installed "cmatrix"
-# TMOUT=900
-# TRAPALRM() { if command -v cmatrix &> /dev/null; then cmatrix -sb; fi }
-
-speedtest() {
-    curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -
-}
-
-dadjoke() {
-    curl https://icanhazdadjoke.com
-}
-
-# Find dictionary definition
-dict() {
-    if [ "$3" ]; then
-        curl "dict://dict.org/d:$1 $2 $3"
-    elif [ "$2" ]; then
-        curl "dict://dict.org/d:$1 $2"
-    else
-        curl "dict://dict.org/d:$1"
-    fi
-}
-
-# Find geo info from IP
-ipgeo() {
-    # Specify ip or your ip will be used
-    if [ "$1" ]; then
-        curl "http://api.db-ip.com/v2/free/$1"
-    else
-        curl "http://api.db-ip.com/v2/free/$(myip)"
-    fi
-}
-
-# Show covid-19 spread stats
-corona() {
-    # Specify country otherwise shows stats for all
-    if [ "$1" ]; then
-        curl "https://corona-stats.online/$1"
-    else
-        curl "https://corona-stats.online"
     fi
 }

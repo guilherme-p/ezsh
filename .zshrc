@@ -31,3 +31,7 @@ source $ZSH/oh-my-zsh.sh
 export FZF_DEFAULT_OPS="--extended"
 
 alias k="k -h"       # show human readable file sizes, in kb, mb etc
+unsetopt BEEP
+bindkey '^I'   complete-word       # tab          | complete
+bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
+
