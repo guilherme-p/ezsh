@@ -23,7 +23,6 @@ fi
 # Now source oh-my-zsh.sh so that any plugins added in ~/.config/ezsh/zshrc/* files also get loaded
 source $ZSH/oh-my-zsh.sh
 
-
 # Configs that can only work after "source $ZSH/oh-my-zsh.sh", such as Aliases that depend oh-my-zsh plugins
 
 # Now source fzf.zsh , otherwise Ctr+r is overwritten by ohmyzsh
@@ -32,6 +31,7 @@ export FZF_DEFAULT_OPS="--extended"
 
 alias k="k -h"       # show human readable file sizes, in kb, mb etc
 unsetopt BEEP
-bindkey '^I'   complete-word       # tab          | complete
-bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
 
+
+bindkey '^I'   complete-word       # tab          | complete
+bindkey '^ ' autosuggest-accept    # ctrl + space | autosuggest
